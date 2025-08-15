@@ -8,57 +8,67 @@
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
         }
+
         h1 {
             text-align: center;
-        }
-        div.bloco {
-            margin: 20px;
-            padding: 10px;
-            border: 1px solid black;
+            margin-bottom: 30px;
         }
 
-        div.container {
+        section.bloco {
+            margin: 20px auto;
+            padding: 15px;
+            border: 1px solid #333;
+            background-color: #fff;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .container {
             background-color: lightsalmon;
             display: flex;
-            margin: 10px 0px;
+            margin: 10px 0;
+            gap: 10px; /* Espaço entre os itens */
+            padding: 10px;
+            border-radius: 6px;
         }
 
-        div.descricao {
+        .descricao {
             background-color: lightgray;
             padding: 10px;
-            margin: 10px 0px;
+            margin-top: 10px;
+            border-radius: 6px;
         }
 
-        div.item {
-            background-color:  lightskyblue;
+        .item {
+            background-color: lightskyblue;
             border: 1px solid black;
             text-align: center;
             padding: 10px;
+            flex: 1; /* Faz cada item ocupar o mesmo espaço */
+            border-radius: 4px;
         }
 
-        div#con1 {
-            flex-direction: row; /* Linha da esquerda para direita; main-start: esquerda main-end: direita; cross-start: cima cross-end: baixo */
-        }
-
-        div#con2 {
-            flex-direction: row-reverse; /* Linha da direita para esquerda; main-start direita main-end esquerda; cross-start cima cross-end baixo */
-        }
-
-        div#con3 {
-            flex-direction: column; /* Coluna de cima para baixo; main-start: cima main-end: baixo; cross-start: esquerda cross-end: direita*/
-        }
-
-        div#con4 {
-            flex-direction: column-reverse; /* Coluna de cima para baixo; main-start: baixo main-end: cima; cross-star: esquerda cross-end: direita */
-        }
+        /* Configurações de cada exemplo */
+        #con1 { flex-direction: row; } /* Linha da esquerda para direita */
+        #con2 { flex-direction: row-reverse; } /* Linha da direita para esquerda */
+        #con3 { flex-direction: column; } /* Coluna de cima para baixo */
+        #con4 { flex-direction: column-reverse; } /* Coluna de baixo para cima */
     </style>
 </head>
+
 <body>
     <h1>Flexbox - Flex-direction</h1>
 
-    <div class="bloco">
-        <h2>Flex-direction - row:</h2>
+    <section class="bloco">
+        <h2>Flex-direction - row</h2>
 
         <div class="container" id="con1">
             <div class="item">A</div>
@@ -69,18 +79,16 @@
             <div class="item">F</div>
             <div class="item">G</div>
         </div>
-        <div class="descricao">
-            <div>
-                <p>main-axix &#8594; / cross-axix &#8595;</p>
-            </div>
-            <div>
-                <p>Linha da esquerda para direita; main-start: esquerda, main-end: direita; cross-start: cima, cross-end: baixo</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="bloco">
-        <h2>Flex-direction - row-reverse:</h2>
+        <div class="descricao">
+            <p><strong>Eixos:</strong> main-axis → / cross-axis ↓</p>
+
+            <p>Linha da esquerda para direita; main-start: esquerda, main-end: direita; cross-start: cima, cross-end: baixo.</p>
+        </div>
+    </section>
+
+    <section class="bloco">
+        <h2>Flex-direction - row-reverse</h2>
 
         <div class="container" id="con2">
             <div class="item">A</div>
@@ -91,18 +99,16 @@
             <div class="item">F</div>
             <div class="item">G</div>
         </div>
-        <div class="descricao">
-            <div>
-                <p>main-axix &#8592; / cross-axix &#8595;</p>
-            </div>
-            <div>
-                <p>Linha da direita para esquerda; main-start direita, main-end esquerda; cross-start cima, cross-end baixo</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="bloco">
-        <h2>Flex-direction - column:</h2>
+        <div class="descricao">
+            <p><strong>Eixos:</strong> main-axis ← / cross-axis ↓</p>
+            
+            <p>Linha da direita para esquerda; main-start: direita, main-end: esquerda; cross-start: cima, cross-end: baixo.</p>
+        </div>
+    </section>
+
+    <section class="bloco">
+        <h2>Flex-direction - column</h2>
 
         <div class="container" id="con3">
             <div class="item">A</div>
@@ -113,18 +119,16 @@
             <div class="item">F</div>
             <div class="item">G</div>
         </div>
-        <div class="descricao">
-            <div>
-                <p>main-axix &#8595; / cross-axix &#8594;</p>
-            </div>
-            <div>
-                <p>Coluna de cima para baixo; main-start: cima, main-end: baixo; cross-start: esquerda, cross-end: direita</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="bloco">
-        <h2>Flex-direction - column-reverse:</h2>
+        <div class="descricao">
+            <p><strong>Eixos:</strong> main-axis ↓ / cross-axis →</p>
+
+            <p>Coluna de cima para baixo; main-start: cima, main-end: baixo; cross-start: esquerda, cross-end: direita.</p>
+        </div>
+    </section>
+
+    <section class="bloco">
+        <h2>Flex-direction - column-reverse</h2>
 
         <div class="container" id="con4">
             <div class="item">A</div>
@@ -135,14 +139,12 @@
             <div class="item">F</div>
             <div class="item">G</div>
         </div>
+
         <div class="descricao">
-            <div>
-                <p>main-axix &#8593; / cross-axix &#8594;</p>
-            </div>
-            <div>
-                <p>Coluna de baixo para cima; main-start: baixo, main-end: cima; cross-start: esquerda, cross-end: direita</p>
-            </div>
+            <p><strong>Eixos:</strong> main-axis ↑ / cross-axis →</p>
+
+            <p>Coluna de baixo para cima; main-start: baixo, main-end: cima; cross-start: esquerda, cross-end: direita.</p>
         </div>
-    </div>
+    </section>
 </body>
 </html>
