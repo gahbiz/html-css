@@ -6,9 +6,24 @@
     <title>Flexible Box</title>
 
     <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        div.bloco {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
         div.container {
             background-color: lightsalmon;
             display: flex;
+            margin: 10px 0px;
+        }
+
+        div.descricao {
+            background-color: lightgray;
+            padding: 10px;
             margin: 10px 0px;
         }
 
@@ -37,56 +52,86 @@
     </style>
 </head>
 <body>
-    <div class="container" id="con1">
-        <div class="item">A</div>
-        <div class="item">B</div>
-        <div class="item">C</div>
-        <div class="item">D</div>
-        <div class="item">E</div>
-        <div class="item">F</div>
-        <div class="item">G</div>
-        <div>
-            <p>main-axix &#8594; / cross-axix &#8595;</p>
+    <h1>Flexbox - Flex-direction</h1>
+    
+    <div class="bloco">
+        <div class="container" id="con1">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+        <div class="descricao">
+            <div>
+                <p>Flex-direction - row: main-axix &#8594; / cross-axix &#8595;</p>
+            </div>
+            <div>
+                <p>Linha da esquerda para direita; main-start: esquerda, main-end: direita; cross-start: cima, cross-end: baixo</p>
+            </div>
         </div>
     </div>
 
-    <div class="container" id="con2">
-        <div class="item">A</div>
-        <div class="item">B</div>
-        <div class="item">C</div>
-        <div class="item">D</div>
-        <div class="item">E</div>
-        <div class="item">F</div>
-        <div class="item">G</div>
-        <div>
-            <p>main-axix &#8592; / cross-axix &#8595;</p>
+    <div class="bloco">
+        <div class="container" id="con2">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+        <div class="descricao">
+            <div>
+                <p>main-axix &#8592; / cross-axix &#8595;</p>
+            </div>
+            <div>
+                <p>Flex-direction - row-reverse: Linha da direita para esquerda; main-start direita, main-end esquerda; cross-start cima, cross-end baixo</p>
+            </div>
         </div>
     </div>
 
-    <div class="container" id="con3">
-        <div class="item">A</div>
-        <div class="item">B</div>
-        <div class="item">C</div>
-        <div class="item">D</div>
-        <div class="item">E</div>
-        <div class="item">F</div>
-        <div class="item">G</div>
-        <div>
-            <p>main-axix &#8595; / cross-axix &#8594;</p>
+    <div class="bloco">
+        <div class="container" id="con3">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+        <div class="descricao">
+            <div>
+                <p>main-axix &#8595; / cross-axix &#8594;</p>
+            </div>
+            <div>
+                <p>Flex-direction - column: Coluna de cima para baixo; main-start: cima, main-end: baixo; cross-start: esquerda, cross-end: direita</p>
+            </div>
         </div>
     </div>
 
-    <div class="container" id="con4">
-        <div>
-            <p>main-axix &#8593; / cross-axix &#8594;</p>
+    <div class="bloco">
+        <div class="container" id="con4">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
         </div>
-        <div class="item">A</div>
-        <div class="item">B</div>
-        <div class="item">C</div>
-        <div class="item">D</div>
-        <div class="item">E</div>
-        <div class="item">F</div>
-        <div class="item">G</div>
+        <div class="descricao">
+            <div>
+                <p>main-axix &#8593; / cross-axix &#8594;</p>
+            </div>
+            <div>
+                <p>Flex-direction - column-reverse: Coluna de baixo para cima; main-start: baixo, main-end: cima; cross-start: esquerda, cross-end: direita</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
