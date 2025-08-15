@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Box</title>
+
+    <style>
+        div.container {
+            background-color: lightsalmon;
+            display: flex;
+            margin: 10px 0px;
+        }
+
+        div.item {
+            background-color:  lightskyblue;
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+
+        div#con1 {
+            flex-direction: row; /* Linha da esquerda para direita; main-start: esquerda main-end: direita; cross-start: cima cross-end: baixo */
+        }
+
+        div#con2 {
+            flex-direction: row-reverse; /* Linha da direita para esquerda; main-start direita main-end esquerda; cross-start cima cross-end baixo */
+        }
+
+        div#con3 {
+            flex-direction: column; /* Coluna de cima para baixo; main-start: cima main-end: baixo; cross-start: esquerda cross-end: direita*/
+        }
+
+        div#con4 {
+            flex-direction: column-reverse; /* Coluna de cima para baixo; main-start: baixo main-end: cima; cross-star: esquerda cross-end: direita */
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="con1">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div>
+            <p>main-axix &#8594; / cross-axix &#8595;</p>
+        </div>
+    </div>
+
+    <div class="container" id="con2">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div>
+            <p>main-axix &#8592; / cross-axix &#8595;</p>
+        </div>
+    </div>
+
+    <div class="container" id="con3">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div>
+            <p>main-axix &#8595; / cross-axix &#8594;</p>
+        </div>
+    </div>
+
+    <div class="container" id="con4">
+        <div>
+            <p>main-axix &#8593; / cross-axix &#8594;</p>
+        </div>
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+    </div>
+</body>
+</html>
