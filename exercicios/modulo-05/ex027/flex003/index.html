@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo Flexbox - flex-direction + flex-wrap</title>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 20px;
+      background-color: #fafafa;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 8px 0;
+      color: #555;
+    }
+
+    .exemplo {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 30px;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    /* Container flex com gap */
+    .container {
+      display: flex;
+      gap: 10px;
+      border: 1px dashed #aaa;
+      padding: 10px;
+      min-height: 120px;
+      margin-top: 15px;
+      align-items: stretch;
+    }
+
+    /* Itens padrão */
+    .item {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center;
+        flex: 1; /* cresce igualmente */
+        min-width: 100px; /* limite mínimo pra não esmagar */
+    }
+
+    /* Setas dos eixos */
+    .eixos {
+      font-size: 0.9rem;
+      margin: 5px 0 15px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+    <h1>Exemplos de flex-direction + flex-wrap</h1>
+
+    <!-- ROW + WRAP -->
+    <div class="exemplo">
+        <h2>flex-direction: row + flex-wrap: wrap</h2>
+
+        <div class="container" style="flex-flow: row wrap;">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+
+        <div class="eixos">Eixo principal ➡️ | Eixo transversal ⬇️</div>
+
+        <p>Os itens ficam lado a lado da esquerda para a direita e, ao acabar o espaço, quebram para a linha de baixo.</p>
+    </div>
+
+    <!-- ROW-REVERSE + WRAP -->
+    <div class="exemplo">
+        <h2>flex-direction: row-reverse + flex-wrap: wrap</h2>
+
+        <div class="container" style="flex-flow: row-reverse wrap;">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+
+        <div class="eixos">Eixo principal ⬅️ | Eixo transversal ⬇️</div>
+
+        <p>Os itens ficam lado a lado da direita para a esquerda e, ao acabar o espaço, quebram para a linha de baixo.</p>
+    </div>
+
+    <!-- ROW + WRAP-REVERSE -->
+    <div class="exemplo">
+        <h2>flex-direction: row + flex-wrap: wrap-reverse</h2>
+            
+        <div class="container" style="flex-flow: row wrap-reverse;">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+
+        <div class="eixos">Eixo principal ➡️ | Eixo transversal ⬆️</div>
+
+        <p>Os itens ficam lado a lado da esquerda para a direita e quebram para cima quando não há mais espaço.</p>
+    </div>
+
+    <!-- ROW-REVERSE + WRAP-REVERSE -->
+    <div class="exemplo">
+        <h2>flex-direction: row-reverse + flex-wrap: wrap-reverse</h2>
+
+        <div class="container" style="flex-flow: row-reverse wrap-reverse;">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+            
+        <div class="eixos">Eixo principal ⬅️ | Eixo transversal ⬆️</div>
+
+        <p>Os itens ficam lado a lado da direita para a esquerda e quebram para cima quando não há mais espaço.</p>
+    </div>
+
+    <!-- COLUMN + WRAP -->
+    <div class="exemplo">
+        <h2>flex-direction: column + flex-wrap: wrap</h2>
+
+        <div class="container" style="flex-flow: column wrap; height: 150px;">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+
+        <div class="eixos">Eixo principal ⬇️ | Eixo transversal ➡️</div>
+            
+        <p>Os itens ficam empilhados de cima para baixo e quebram em novas colunas à direita quando não há espaço.</p>
+    </div>
+
+    <!-- COLUMN-REVERSE + WRAP -->
+    <div class="exemplo">
+        <h2>flex-direction: column-reverse + flex-wrap: wrap</h2>
+
+        <div class="container" style="flex-flow: column-reverse wrap; height: 150px;">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+
+        <div class="eixos">Eixo principal ⬆️ | Eixo transversal ➡️</div>
+            
+        <p>Os itens ficam empilhados de baixo para cima e quebram em novas colunas à direita quando não há espaço.</p>
+    </div>
+
+    <!-- COLUMN + WRAP-REVERSE -->
+    <div class="exemplo">
+        <h2>flex-direction: column + flex-wrap: wrap-reverse</h2>
+
+        <div class="container" style="flex-flow: column wrap-reverse; height: 150px;">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+
+        <div class="eixos">Eixo principal ⬇️ | Eixo transversal ⬅️</div>
+            
+        <p>Os itens ficam empilhados de cima para baixo e quebram em novas colunas à esquerda quando não há espaço.</p>
+    </div>
+
+    <!-- COLUMN-REVERSE + WRAP-REVERSE -->
+    <div class="exemplo">
+        <h2>flex-direction: column-reverse + flex-wrap: wrap-reverse</h2>
+
+        <div class="container" style="flex-flow: column-reverse wrap-reverse; height: 150px;">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+            <div class="item">G</div>
+        </div>
+
+        <div class="eixos">Eixo principal ⬆️ | Eixo transversal ⬅️</div>
+
+        <p>Os itens ficam empilhados de baixo para cima e quebram em novas colunas à esquerda quando não há espaço.</p>
+    </div>
+</body>
+</html>
