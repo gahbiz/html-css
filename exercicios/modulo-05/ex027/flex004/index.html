@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox - Alinhamento nos Eixos</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            margin: 20px;
+            line-height: 1.6;
+        }
+    
+        h1 {
+            text-align: center;
+        }
+    
+        .exemplo {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+    
+        .exemplo h2 {
+            margin-bottom: 10px;
+            color: #444;
+        }
+    
+        .descricao {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #666;
+        }
+    
+        .container {
+            display: flex;
+            border: 2px dashed #aaa;
+            border-radius: 8px;
+            padding: 10px;
+            height: 200px;
+            background: #fafafa;
+        }
+    
+        .item {
+            flex: 0 0 80px;
+            height: 50px;
+            background: #4cafef;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    
+        /* Exemplos justify-content */
+        .jc-start   { justify-content: flex-start; }
+        .jc-center  { justify-content: center; }
+        .jc-end     { justify-content: flex-end; }
+        .jc-between { justify-content: space-between; }
+        .jc-around  { justify-content: space-around; }
+        .jc-evenly  { justify-content: space-evenly; }
+    
+        /* Exemplos align-items */
+        .ai-start   { align-items: flex-start; }
+        .ai-center  { align-items: center; }
+        .ai-end     { align-items: flex-end; }
+        .ai-stretch { align-items: stretch; }
+    </style>
+</head>
+
+<body>
+    <h1>Alinhamento nos Eixos (justify-content & align-items)</h1>
+  
+    <div class="exemplo">
+        <h2>Justify-content: flex-start</h2>
+
+        <div class="container jc-start">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+        </div>
+
+        <p class="descricao">Itens alinhados ao início do eixo principal (padrão) (<b>main-axis</b>).</p>
+    </div>
+  
+    <div class="exemplo">
+        <h2>Justify-content: center</h2>
+        
+        <div class="container jc-center">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+        </div>
+
+        <p class="descricao">Itens centralizados no eixo principal (<b>main-axis</b>).</p>
+    </div>
+  
+    <div class="exemplo">
+        <h2>Justify-content: flex-end</h2>
+        
+        <div class="container jc-end">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+        </div>
+
+        <p class="descricao">Itens alinhados ao final do eixo principal (<b>main-axis</b>).</p>
+    </div>
+  
+    <div class="exemplo">
+        <h2>Justify-content: space-between</h2>
+        
+        <div class="container jc-between">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+        </div>
+        
+        <p class="descricao">Primeiro e último item nos cantos, espaço distribuído entre os demais, no eixo principal (<b>main-axis</b>).</p>
+    </div>
+  
+    <div class="exemplo">
+        <h2>Justify-content: space-around</h2>
+        
+        <div class="container jc-around">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+        </div>
+
+        <p class="descricao">Espaços iguais ao redor de cada item, no eixo principal (<b>main-axis</b>). </p>
+    </div>
+  
+    <div class="exemplo">
+        <h2>Justify-content: space-evenly</h2>
+        
+        <div class="container jc-evenly">
+            <div class="item">A</div>
+            <div class="item">B</div>
+            <div class="item">C</div>
+            <div class="item">D</div>
+            <div class="item">E</div>
+            <div class="item">F</div>
+        </div>
+
+        <p class="descricao">Espaços totalmente iguais entre os itens e as bordas, também no eixo principal (<b>main-axis</b>).</p>
+    </div>
+  
+    <div class="exemplo">
+        <h2>Align-items: flex-start</h2>
+        
+        <div class="container ai-start">
+            <div class="item">A</div>
+            <div class="item" style="height: 80px;">B</div>
+            <div class="item" style="height: 100px;">C</div>
+            <div class="item" style="height: 120px;">D</div>
+            <div class="item" style="height: 140px;">E</div>
+            <div class="item" style="height: 160px;">F</div>
+        </div>
+
+        <p class="descricao">Itens alinhados ao topo do eixo transversal (<b>cross-axis</b>).</p>
+    </div>
+  
+    <div class="exemplo">
+        <h2>Align-items: center</h2>
+        
+        <div class="container ai-center">
+            <div class="item">A</div>
+            <div class="item" style="height: 80px;">B</div>
+            <div class="item" style="height: 100px;">C</div>
+            <div class="item" style="height: 120px;">D</div>
+            <div class="item" style="height: 140px;">E</div>
+            <div class="item" style="height: 160px;">F</div>
+        </div>
+
+        <p class="descricao">Itens centralizados no eixo transversal (<b>cross-axis</b>).</p>
+    </div>
+  
+    <div class="exemplo">
+        <h2>Align-items: flex-end</h2>
+      
+        <div class="container ai-end">
+            <div class="item">A</div>
+            <div class="item" style="height: 80px;">B</div>
+            <div class="item" style="height: 100px;">C</div>
+            <div class="item" style="height: 120px;">D</div>
+            <div class="item" style="height: 140px;">E</div>
+            <div class="item" style="height: 160px;">F</div>
+        </div>
+
+        <p class="descricao">Itens alinhados à base do eixo transversal (<b>cross-axis</b>).</p>
+    </div>
+  
+    <div class="exemplo">
+        <h2>Align-items: stretch</h2>
+      
+        <div class="container ai-stretch">
+            <div class="item" style="height: auto;">A</div>
+            <div class="item" style="height: auto;">B</div>
+            <div class="item" style="height: auto;">C</div>
+            <div class="item" style="height: auto;">D</div>
+            <div class="item" style="height: auto;">E</div>
+            <div class="item" style="height: auto;">F</div>
+        </div>
+
+        <p class="descricao">Itens se esticam para preencher o eixo transversal (se não tiver altura definida) (<b>cross-axis</b>).</p>
+    </div>
+</body>
+</html>
