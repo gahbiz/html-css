@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex006 - alinhamento de elementos empacotados</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.3;
+      margin: 20px;
+      padding: 0 20px;
+    }
+
+    .exemplo {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 30px auto;
+        max-width: 800px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .container {
+      background-color: #f0f0f0;
+      display: flex;
+      flex-wrap: wrap; /* necessário para gerar múltiplas linhas */
+      width: 600px;
+      height: 300px;
+      margin: 10px auto 40px auto;
+      border: 2px solid black;
+    }
+
+    .item {
+      background-color: lightblue;
+      border: 1px solid darkblue;
+      flex: 0 0 100px; /* largura fixa */
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      font-weight: bold;
+    }
+
+    /* Diferentes valores de align-content */
+    .flex-start { align-content: flex-start; }
+    .center { align-content: center; }
+    .flex-end { align-content: flex-end; }
+    .stretch { align-content: stretch; }
+    .space-between { align-content: space-between; }
+    .space-around { align-content: space-around; }
+    .space-evenly { align-content: space-evenly; }
+
+    /* Estilização da explicação */
+    .descricao {
+      background: #e8f4ff;
+      border-left: 4px solid #0077cc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Flex006 - Alinhamento de elementos empacotados (align-content)</h1>
+  <p><strong>Eixo principal:</strong> linha (horizontal, da esquerda para a direita).<br>
+     <strong>Eixo transversal:</strong> coluna (vertical, de cima para baixo).<br>
+     O <code>align-content</code> organiza o espaçamento entre as <strong>linhas de itens</strong> ao longo do eixo transversal.</p>
+
+  <!-- flex-start -->
+  <div class="exemplo">
+      <h2>Align-content: flex-start</h2>
+      
+      <div class="container flex-start">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div class="item">H</div>
+        <div class="item">I</div>
+        <div class="item">J</div>
+        <div class="item">K</div>
+        <div class="item">L</div>
+        <div class="item">M</div>
+        <div class="item">N</div>
+      </div>
+
+      <div class="descricao">
+        As linhas de itens ficam todas "grudadas" no <strong>início do eixo transversal</strong> (topo).
+      </div>
+  </div>
+
+  <!-- center -->
+  <div class="exemplo">
+      <h2>Align-content: center</h2>
+      
+      <div class="container center">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div class="item">H</div>
+        <div class="item">I</div>
+        <div class="item">J</div>
+        <div class="item">K</div>
+        <div class="item">L</div>
+        <div class="item">M</div>
+        <div class="item">N</div>
+      </div>
+
+      <div class="descricao">
+        As linhas de itens ficam <strong>centralizadas</strong> verticalmente no container.
+      </div>
+  </div>
+
+  <!-- flex-end -->
+  <div class="exemplo">
+      <h2>Align-content: flex-end</h2>
+      
+      <div class="container flex-end">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div class="item">H</div>
+        <div class="item">I</div>
+        <div class="item">J</div>
+        <div class="item">K</div>
+        <div class="item">L</div>
+        <div class="item">M</div>
+        <div class="item">N</div>
+      </div>
+
+      <div class="descricao">
+        As linhas ficam todas empurradas para o <strong>final do eixo transversal</strong> (base do container).
+      </div>
+  </div>
+
+  <!-- stretch -->
+  <div class="exemplo">
+      <h2>Align-content: stretch</h2>
+      
+      <div class="container stretch">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div class="item">H</div>
+        <div class="item">I</div>
+        <div class="item">J</div>
+        <div class="item">K</div>
+        <div class="item">L</div>
+        <div class="item">M</div>
+        <div class="item">N</div>
+      </div>
+
+      <div class="descricao">
+        As linhas <strong>se esticam</strong> igualmente para ocupar todo o espaço vertical disponível.
+      </div>
+  </div>
+
+  <!-- space-between -->
+  <div class="exemplo">
+      <h2>Align-content: space-between</h2>
+      
+      <div class="container space-between">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div class="item">H</div>
+        <div class="item">I</div>
+        <div class="item">J</div>
+        <div class="item">K</div>
+        <div class="item">L</div>
+        <div class="item">M</div>
+        <div class="item">N</div>
+      </div>
+
+      <div class="descricao">
+        O espaço entre as linhas é <strong>distribuído igualmente</strong>,
+        mas a primeira linha fica no topo e a última na base.
+      </div>
+  </div>
+
+  <!-- space-around -->
+  <div class="exemplo">
+      <h2>Align-content: space-around</h2>
+      
+      <div class="container space-around">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div class="item">H</div>
+        <div class="item">I</div>
+        <div class="item">J</div>
+        <div class="item">K</div>
+        <div class="item">L</div>
+        <div class="item">M</div>
+        <div class="item">N</div>
+      </div>
+
+      <div class="descricao">
+        Cada linha recebe um espaço ao seu redor,
+        mas o espaço das extremidades (topo/base) é <strong>metade</strong> do espaço entre linhas.
+      </div>
+  </div>
+
+  <!-- space-evenly -->
+  <div class="exemplo">
+      <h2>Align-content: space-evenly</h2>
+      
+      <div class="container space-evenly">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div class="item">H</div>
+        <div class="item">I</div>
+        <div class="item">J</div>
+        <div class="item">K</div>
+        <div class="item">L</div>
+        <div class="item">M</div>
+        <div class="item">N</div>
+      </div>
+
+      <div class="descricao">
+        O espaço entre todas as linhas e as bordas do container é <strong>exatamente o mesmo</strong>.
+      </div>
+  </div>
+</body>
+</html>
