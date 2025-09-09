@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flex007 - Playground Interativo</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.4;
+    margin: 20px;
+    padding: 0 20px;
+    background: #f4f4f4;
+  }
+
+  h1 { text-align: center; margin-bottom: 40px; }
+
+  .exemplo {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 900px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .container {
+    display: flex;
+    border: 2px dashed #aaa;
+    padding: 10px;
+    height: 200px;
+    margin-bottom: 20px;
+    background: #fafafa;
+    gap: 10px;
+  }
+
+  .container.resize {
+    resize: horizontal;
+    overflow: auto;
+    min-width: 200px;
+    max-width: 100%;
+  }
+
+  .item {
+    background-color: #4cafef;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    margin: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    flex-basis: 100px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .controles {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .controles label {
+    font-size: 0.9em;
+  }
+
+  .controles input[type="range"] {
+    vertical-align: middle;
+  }
+
+  button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    background: #4cafef;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  button:hover {
+    background: #3a8ec4;
+  }
+
+  .descricao {
+    margin-top: 10px;
+    font-size: 0.95em;
+  }
+</style>
+</head>
+
+<body>
+<h1>Flex007 - Playground Interativo</h1>
+
+<!-- Order -->
+<div class="exemplo">
+  <h2>Order</h2>
+  <div class="controles">
+    <label>Item 1: <input type="range" min="-3" max="5" value="0" oninput="itensOrder[0].style.order=this.value"></label>
+    <label>Item 2: <input type="range" min="-3" max="5" value="0" oninput="itensOrder[1].style.order=this.value"></label>
+    <label>Item 3: <input type="range" min="-3" max="5" value="0" oninput="itensOrder[2].style.order=this.value"></label>
+    <label>Item 4: <input type="range" min="-3" max="5" value="0" oninput="itensOrder[3].style.order=this.value"></label>
+    <button onclick="resetOrder()">Reset</button>
+  </div>
+  <div class="container" id="order-container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+  </div>
+  <div class="descricao">
+    Use os sliders para alterar a propriedade <b>order</b>. Itens com menor valor aparecem primeiro.
+  </div>
+</div>
+
+<!-- Align Self -->
+<div class="exemplo">
+    <h2>Align Self</h2>
+    <div class="controles">
+      <button onclick="setAlign(0,'flex-start')">Item 1 Start</button>
+      <button onclick="setAlign(1,'center')">Item 2 Center</button>
+      <button onclick="setAlign(2,'flex-end')">Item 3 End</button>
+      <!-- Ajuste aqui: Stretch agora ativa 200px -->
+      <button onclick="setStretch()">Item 4 Stretch</button>
+      <button onclick="resetAlign()">Reset</button>
+    </div>
+    <div class="container" id="align-container">
+      <div class="item">Item 1</div>
+      <div class="item">Item 2</div>
+      <div class="item">Item 3</div>
+      <div class="item" id="stretchItem">Item 4</div>
+    </div>
+    <div class="descricao">
+      Clique nos botões para aplicar <b>align-self</b> individualmente em cada item.
+    </div>
+  </div>
+
+<!-- Flex Basis -->
+<div class="exemplo">
+  <h2>Flex Basis</h2>
+  <div class="controles">
+    <label>Item 1: <input type="range" min="50" max="200" value="100" oninput="itensBasis[0].style.flexBasis=this.value+'px'"></label>
+    <label>Item 2: <input type="range" min="50" max="200" value="100" oninput="itensBasis[1].style.flexBasis=this.value+'px'"></label>
+    <label>Item 3: <input type="range" min="50" max="200" value="100" oninput="itensBasis[2].style.flexBasis=this.value+'px'"></label>
+    <button onclick="resetBasis()">Reset</button>
+  </div>
+  <div class="container" id="basis-container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+  </div>
+  <div class="descricao">
+    O <b>flex-basis</b> define o tamanho inicial dos itens antes de aplicar crescimento ou encolhimento.
+  </div>
+</div>
+
+<!-- Flex Grow -->
+<div class="exemplo">
+  <h2>Flex Grow</h2>
+  <div class="controles">
+    <label>Item 1: <input type="range" min="0" max="5" value="0" oninput="itensGrow[0].style.flexGrow=this.value"></label>
+    <label>Item 2: <input type="range" min="0" max="5" value="1" oninput="itensGrow[1].style.flexGrow=this.value"></label>
+    <label>Item 3: <input type="range" min="0" max="5" value="2" oninput="itensGrow[2].style.flexGrow=this.value"></label>
+    <button onclick="resetGrow()">Reset</button>
+  </div>
+  <div class="container" id="grow-container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+  </div>
+  <div class="descricao">
+    O <b>flex-grow</b> define quanto os itens crescem em relação uns aos outros.
+  </div>
+</div>
+
+<!-- Flex Shrink -->
+<div class="exemplo">
+  <h2>Flex Shrink</h2>
+  <div class="controles">
+    <label>Item 1: <input type="range" min="0" max="5" value="1" oninput="itensShrink[0].style.flexShrink=this.value"></label>
+    <label>Item 2: <input type="range" min="0" max="5" value="1" oninput="itensShrink[1].style.flexShrink=this.value"></label>
+    <label>Item 3: <input type="range" min="0" max="5" value="1" oninput="itensShrink[2].style.flexShrink=this.value"></label>
+    <button onclick="resetShrink()">Reset</button>
+  </div>
+  <div class="container resize" id="shrink-container" style="width: 300px;">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+  </div>
+  <div class="descricao">
+    Arraste a borda do container para mudar sua largura e veja como os itens <b>flex-shrink</b> encolhem.
+  </div>
+</div>
+
+<script>
+  // Order
+  const itensOrder = document.querySelectorAll('#order-container .item');
+  function resetOrder() { itensOrder.forEach(i => i.style.order = 0); }
+
+  // Align Self
+  const itensAlign = document.querySelectorAll('#align-container .item');
+  function setAlign(i, value) { 
+    itensAlign[i].style.alignSelf = value; 
+    itensAlign[i].style.height = "50px"; // garante altura normal nos outros
+  }
+  function setStretch() {
+    const stretch = document.getElementById("stretchItem");
+    stretch.style.alignSelf = "stretch";
+    stretch.style.height = "200px"; // ocupa altura toda do container
+  }
+  function resetAlign() { 
+    itensAlign.forEach(i => {
+      i.style.alignSelf = 'auto'; 
+      i.style.height = "50px"; // volta altura padrão
+    });
+  }
+
+  // Flex Basis
+  const itensBasis = document.querySelectorAll('#basis-container .item');
+  function resetBasis() { itensBasis.forEach(i => i.style.flexBasis = '100px'); }
+
+  // Flex Grow
+  const itensGrow = document.querySelectorAll('#grow-container .item');
+  function resetGrow() { itensGrow[0].style.flexGrow=0; itensGrow[1].style.flexGrow=1; itensGrow[2].style.flexGrow=2; }
+
+  // Flex Shrink
+  const itensShrink = document.querySelectorAll('#shrink-container .item');
+  function resetShrink() { itensShrink.forEach(i => i.style.flexShrink = 1); }
+</script>
+</body>
+</html>
