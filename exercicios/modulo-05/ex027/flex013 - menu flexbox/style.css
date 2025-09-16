@@ -88,4 +88,13 @@ footer {
     box-sizing: border-box;
 }
 
+@media screen and (min-width: 581px) {
+    span#burguer {
+        display: none;
+    }
 
+    #menu {
+        display: flex !important;
+    }
+    
+}

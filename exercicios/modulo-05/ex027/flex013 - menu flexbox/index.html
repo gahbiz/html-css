@@ -6,11 +6,15 @@
     <title>Menu Flexbox</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 580px)">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Meu Site</h1>
-        <nav>
+
+        <span id="burguer" class="material-icons" onclick="clickMenu()">menu</span>
+        <nav id="menu">
             <a href="#">Opção 1</a>
             <a href="#">Opção 2</a>
             <a href="#">Opção 3</a>
@@ -39,5 +43,16 @@
     <footer>
         <p>Feito por Gabriela Ludovino &copy; 2025</p>
     </footer>
+
+    <script>
+        function clickMenu() {
+            const menu = document.getElementById('menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+    </script>
 </body>
 </html>
