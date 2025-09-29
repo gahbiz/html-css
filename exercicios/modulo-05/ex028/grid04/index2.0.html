@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Areas Didático</title>
+  <link rel="stylesheet" href="style2.0.css">
+</head>
+<body>
+  <h1>Exemplo de CSS Grid com linhas e colunas</h1>
+  <p>
+    Este exemplo mostra como posicionar elementos em um <strong>grid</strong>. <br>
+    As linhas (cada linha e coluna mostra números positivos (do topo/esquerda) e negativos (de baixo/direita)), colunas e seus números foram destacados para facilitar a visualização.
+  </p>
+
+  <div class="grid-wrapper" id="gridWrapper">
+    <!-- overlay vazio que o JS vai popular -->
+    <div class="numbers-overlay" id="numbersOverlay" aria-hidden="true"></div>
+
+    <!-- container do grid -->
+    <div class="container" id="gridContainer">
+      <div class="caixa1">Caixa 01</div>
+      <div class="caixa2">Caixa 02</div>
+      <div class="caixa3">Caixa 03</div>
+    </div>
+  </div>
+
+  <script>
+  // Debounce helper
+  function debounce(fn, wait=80){
+    let t;
+    return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn(...args), wait); };
+  }
+
+  function parsePxList(str){
+    if(!str) return [];
+    return str.trim().split(/\s+/).map(s => {
+      // remove possíveis parênteses/calc - valores computados costumam vir em px
+      const m = s.match(/-?[\d.]+/);
+      return m ? parseFloat(m[0]) : 0;
+    });
+  }
+
+  function updateNumbers(){
+    const wrapper = document.getElementById('gridWrapper');
+    const container = document.getElementById('gridContainer');
+    const overlay = document.getElementById('numbersOverlay');
+
+    if(!container || !overlay || !wrapper) return;
+
+    // limpa overlay
+    overlay.innerHTML = '';
+
+    const cStyle = getComputedStyle(container);
+    const wRect = wrapper.getBoundingClientRect();
+    const cRect = container.getBoundingClientRect();
+
+    // borda e padding para achar a área interna onde as células ficam
+    const borderTop = parseFloat(cStyle.borderTopWidth) || 0;
+    const borderLeft = parseFloat(cStyle.borderLeftWidth) || 0;
+    const padTop = parseFloat(cStyle.paddingTop) || 0;
+    const padLeft = parseFloat(cStyle.paddingLeft) || 0;
+
+    // gaps
+    const rowGap = parseFloat(cStyle.rowGap) || parseFloat(cStyle.gap) || 0;
+    const colGap = parseFloat(cStyle.columnGap) || parseFloat(cStyle.gap) || 0;
+
+    // tracks computadas (valores em px)
+    const rowSizes = parsePxList(cStyle.gridTemplateRows);
+    const colSizes = parsePxList(cStyle.gridTemplateColumns);
+
+    const rowsCount = rowSizes.length;
+    const colsCount = colSizes.length;
+
+    // pos inicial (top/left) da área interna do grid, RELATIVO ao wrapper
+    const innerTopRel = (cRect.top - wRect.top) + borderTop + padTop;
+    const innerLeftRel = (cRect.left - wRect.left) + borderLeft + padLeft;
+
+    // calcula posições Y das linhas (n+1)
+    const yPositions = [];
+    let y = innerTopRel;
+    yPositions.push(y);
+    for(let i=0;i<rowsCount;i++){
+      y += (rowSizes[i] || 0) + rowGap;
+      yPositions.push(y);
+    }
+
+    // calcula posições X das colunas (n+1)
+    const xPositions = [];
+    let x = innerLeftRel;
+    xPositions.push(x);
+    for(let i=0;i<colsCount;i++){
+      x += (colSizes[i] || 0) + colGap;
+      xPositions.push(x);
+    }
+
+    // cria elementos para linhas (horizontal lines)
+    // note: para n rows existem n+1 linhas de grade
+    for(let i=0;i<yPositions.length;i++){
+      const el = document.createElement('div');
+      el.className = 'number-line-row';
+      // posa verticalmente onde a linha está
+      el.style.top = Math.round(yPositions[i]) + 'px';
+      // left já controlado via CSS (-56px), pode ajustar dinamicamente se quiser
+      // números: positivo = i+1   negativo = i - (n+1)
+      const pos = i + 1;
+      const neg = i - (yPositions.length) ; // i - (rows+1)
+      el.innerHTML = `<span class="num-pos">${pos}</span><span class="num-neg">${neg}</span>`;
+      overlay.appendChild(el);
+    }
+
+    // cria elementos para colunas (vertical lines)
+    for(let i=0;i<xPositions.length;i++){
+      const el = document.createElement('div');
+      el.className = 'number-line-col';
+      // posa horizontalmente onde a linha está
+      el.style.left = Math.round(xPositions[i]) + 'px';
+      const pos = i + 1;
+      const neg = i - (xPositions.length);
+      el.innerHTML = `<span class="num-pos">${pos}</span><span class="num-neg">${neg}</span>`;
+      overlay.appendChild(el);
+    }
+  }
+
+  // roda quando estiver pronto
+  document.addEventListener('DOMContentLoaded', ()=>{
+    updateNumbers();
+    // atualiza quando redimensionarem a janela ou o layout mudar
+    window.addEventListener('resize', debounce(updateNumbers, 80));
+    // também observa mudanças de estilo/tamanho do container (p.ex.: mudança de CSS vars)
+    const container = document.getElementById('gridContainer');
+    if(container){
+      const ro = new ResizeObserver(debounce(updateNumbers, 50));
+      ro.observe(container);
+      // opcional: observar alterações de atributos CSS vars no wrapper (se você alterar --rows/--cols)
+    }
+  });
+</script>
+</body>
+</html>
